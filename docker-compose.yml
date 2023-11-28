@@ -1,0 +1,29 @@
+# mengatur versi docker-compose
+version: '3.7'
+
+# mengatur service yang akan dijalankan
+services:
+
+  # service pertama
+  item-db:
+    # image yang digunakan
+    image: mongo:3
+    # volume yang digunakan
+    volumes:
+      - app-db:/data/db
+    # mengatur restart service
+    restart: always
+
+  # service kedua
+  item-app:
+    # image yang digunakan
+    image: rayhanpngst/item-app:v1
+    # mengatur port yang digunakan
+    ports:
+      - "80:8080"
+    # mengatur restart service
+    restart: always
+
+# mengatur volume yang digunakan
+volumes:
+  app-db:  
