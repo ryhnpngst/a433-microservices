@@ -11,6 +11,8 @@ services:
       - ~/docker-conf/rabbitmq/log:/var/log/rabbitmq
     networks:
       - rabbitmq-network
+  shipping-services:
+    image: rayhanpngst/shipping-service:latest
   network:
     rabbitmq-network:
       driver: bridge
