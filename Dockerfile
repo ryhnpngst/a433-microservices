@@ -2,11 +2,9 @@ FROM node:14
 
 WORKDIR /app
 
-COPY package.json /app
+COPY . .
 
 RUN npm install
-
-COPY . .
 
 EXPOSE 3000
 
