@@ -11,20 +11,18 @@ services:
       - ~/docker-conf/rabbitmq/log:/var/log/rabbitmq
     networks:
       - rabbitmq-network
-    environment:
-      - AMQP_URL: "amqp://localhost:5672"
   shipping-services:
     image: rayhanpngst/shipping-service:latest
     depends_on:
       - rabbitmq
     environment:
-      - AMQP_URL: "amqp://localhost:5672"
+      AMQP_URL: "amqp://rabbitmq:5672"
   order-services:
     image: rayhanpngst/order-service:latest
     depends_on:
       - rabbitmq
     environment:
-      - AMQP_URL: "amqp://localhost:5672"
+      AMQP_URL: "amqp://rabbitmq:5672"
   network:
     rabbitmq-network:
       driver: bridge
